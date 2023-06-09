@@ -1,6 +1,6 @@
 cabal-version:      1.12
 name:               postgresql-simple
-version:            0.6.5
+version:            0.6.6
 x-revision:         1
 synopsis:           Mid-Level PostgreSQL client library
 description:
