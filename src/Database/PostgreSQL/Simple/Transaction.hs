@@ -201,18 +201,19 @@ beginLevel lvl = beginMode defaultTransactionMode { isolationLevel = lvl }
 -- | Begin a transaction with a given transaction mode
 beginMode :: TransactionMode -> Connection -> IO ()
 beginMode mode conn = do
-    _ <- execute_ conn $! Query (B.concat ["BEGIN", isolevel, readmode])
+--    _ <- execute_ conn $! Query (B.concat ["BEGIN", isolevel, readmode])
+    _ <- execute_ conn $! Query ("BEGIN TRANSACTION")
     return ()
-  where
-    isolevel = case isolationLevel mode of
-                 DefaultIsolationLevel -> ""
-                 ReadCommitted  -> " ISOLATION LEVEL READ COMMITTED"
-                 RepeatableRead -> " ISOLATION LEVEL REPEATABLE READ"
-                 Serializable   -> " ISOLATION LEVEL SERIALIZABLE"
-    readmode = case readWriteMode mode of
-                 DefaultReadWriteMode -> ""
-                 ReadWrite -> " READ WRITE"
-                 ReadOnly  -> " READ ONLY"
+--  where
+--    isolevel = case isolationLevel mode of
+--                 DefaultIsolationLevel -> ""
+--                 ReadCommitted  -> " ISOLATION LEVEL READ COMMITTED"
+--                 RepeatableRead -> " ISOLATION LEVEL REPEATABLE READ"
+--                 Serializable   -> " ISOLATION LEVEL SERIALIZABLE"
+--    readmode = case readWriteMode mode of
+--                 DefaultReadWriteMode -> ""
+--                 ReadWrite -> " READ WRITE"
+--                 ReadOnly  -> " READ ONLY"
 
 ------------------------------------------------------------------------
 -- Savepoint
